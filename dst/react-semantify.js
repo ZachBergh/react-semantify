@@ -1844,25 +1844,22 @@ var Basic = _react2.default.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      props: {}
+      children: {}
     };
   },
 
   render: function render() {
-    var props = this.state.props;
-    var children = props.children;
-
-    var other = _objectWithoutProperties(props, ['children']);
+    var other = _objectWithoutProperties(this.props, []);
 
     return _react2.default.createElement(
       'div',
       _extends({}, other, { ref: 'modal' }),
-      children
+      this.state.children
     );
   },
 
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    this.setState({ props: nextProps });
+    this.setState({ children: nextProps.children });
   },
 
   componentDidMount: function componentDidMount() {

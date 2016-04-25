@@ -10,24 +10,23 @@ const Basic = React.createClass({
 
   getInitialState: function() {
     return {
-      props: {}
+      children: {}
     }
   },
 
   render: function () {
 
-    const { state: { props } } = this;
-    const { children, ...other } = props
+    const { props: { ...other } } = this;
 
     return (
       <div {...other} ref="modal" >
-        {children}
+        {this.state.children}
       </div>
     );
   },
 
   componentWillReceiveProps: function (nextProps) {
-    this.setState( { props: nextProps } );
+    this.setState( { children: nextProps.children } );
   },
 
   componentDidMount: function () {
