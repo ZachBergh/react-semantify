@@ -8,39 +8,15 @@ const defaultClassName = 'ui modal';
 
 const Basic = React.createClass({
 
-  getInitialState: function() {
-    return {
-      children: {}
-    }
-  },
-
   render: function () {
 
-    const { props: { ...other } } = this;
+    const { props: { children, ...other } } = this;
 
     return (
       <div {...other} ref="modal" >
-        {this.state.children}
+        {children}
       </div>
     );
-  },
-
-  componentWillReceiveProps: function (nextProps) {
-    this.setState( { children: nextProps.children } );
-  },
-
-  componentDidMount: function () {
-
-    const { props: { init = false } } = this;
-    if (init === false) {
-      return;
-    }
-
-    if (init === true) {
-      $(this.refs.modal).modal();
-    } else {
-      $(this.refs.modal).modal(init);
-    }
   }
 });
 
